@@ -1,0 +1,106 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._\\(\\)]+$"
+        },
+        "solutionName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The container for solution.",
+            "properties": {
+                "id": {
+                    "description": "Resource ID.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "location": {
+                    "description": "Resource location",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Resource name.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "plan": {
+                    "description": "Plan for solution object supported by the OperationsManagement resource provider.",
+                    "properties": {
+                        "name": {
+                            "description": "name of the solution to be created. For Microsoft published solution it should be in the format of solutionType(workspaceName). SolutionType part is case sensitive. For third party solution, it can be anything.",
+                            "type": "string"
+                        },
+                        "product": {
+                            "description": "name of the solution to enabled/add. For Microsoft published gallery solution it should be in the format of OMSGallery/<solutionType>. This is case sensitive",
+                            "type": "string"
+                        },
+                        "promotionCode": {
+                            "description": "promotionCode, Not really used now, can you left as empty",
+                            "type": "string"
+                        },
+                        "publisher": {
+                            "description": "Publisher name. For gallery solution, it is Microsoft.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "properties": {
+                    "description": "Properties for solution object supported by the OperationsManagement resource provider.",
+                    "properties": {
+                        "containedResources": {
+                            "description": "The azure resources that will be contained within the solutions. They will be locked and gets deleted automatically when the solution is deleted.",
+                            "items": {
+                                "description": "the azure resourceId of the resource.",
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "provisioningState": {
+                            "description": "The provisioning state for the solution.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "referencedResources": {
+                            "description": "The resources that will be referenced from this solution. Deleting any of those solution out of band will break the solution.",
+                            "items": {
+                                "description": "the azure resourceId of the resource.",
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "workspaceResourceId": {
+                            "description": "The azure resourceId for the workspace where the solution will be deployed/enabled.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "workspaceResourceId"
+                    ],
+                    "x-ms-azure-resource": true
+                },
+                "type": {
+                    "description": "Resource type.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "x-ms-azure-resource": true,
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

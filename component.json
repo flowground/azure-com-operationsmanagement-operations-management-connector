@@ -1,0 +1,288 @@
+{
+    "title": "Azure Log Analytics - Operations Management",
+    "description": "Azure Log Analytics API reference for Solution.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/operationsmanagement-OperationsManagement/2015-11-01-preview/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Operations_List": {
+            "main": "./lib/actions/Operations_List.js",
+            "title": "Lists all of the available OperationsManagement Rest API operations.",
+            "description": "Lists all of the available OperationsManagement Rest API operations.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Operations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ManagementAssociations_ListBySubscription": {
+            "main": "./lib/actions/ManagementAssociations_ListBySubscription.js",
+            "title": "Retrieves the ManagementAssociations list for the subscription",
+            "description": "Retrieves the ManagementAssociations list.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ManagementAssociations_ListBySubscription.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ManagementConfigurations_ListBySubscription": {
+            "main": "./lib/actions/ManagementConfigurations_ListBySubscription.js",
+            "title": "Retrieves the ManagementConfigurations list for the subscription",
+            "description": "Retrieves the ManagementConfigurations list.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ManagementConfigurations_ListBySubscription.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Solutions_ListBySubscription": {
+            "main": "./lib/actions/Solutions_ListBySubscription.js",
+            "title": "Retrieves the solution list for the subscription",
+            "description": "Retrieves the solution list. It will retrieve both first party and third party solutions",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Solutions_ListBySubscription.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ManagementConfigurations_Delete": {
+            "main": "./lib/actions/ManagementConfigurations_Delete.js",
+            "title": "Deletes the ManagementConfiguration",
+            "description": "Deletes the ManagementConfiguration in the subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ManagementConfigurations_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ManagementConfigurations_Get": {
+            "main": "./lib/actions/ManagementConfigurations_Get.js",
+            "title": "Retrieve ManagementConfiguration.",
+            "description": "Retrieves the user ManagementConfiguration.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ManagementConfigurations_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ManagementConfigurations_CreateOrUpdate": {
+            "main": "./lib/actions/ManagementConfigurations_CreateOrUpdate.js",
+            "title": "Create/Update ManagementConfiguration.",
+            "description": "Creates or updates the ManagementConfiguration.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ManagementConfigurations_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Solutions_ListByResourceGroup": {
+            "main": "./lib/actions/Solutions_ListByResourceGroup.js",
+            "title": "Retrieves the solution list for the subscription",
+            "description": "Retrieves the solution list. It will retrieve both first party and third party solutions",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Solutions_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Solutions_Delete": {
+            "main": "./lib/actions/Solutions_Delete.js",
+            "title": "Deletes the solution",
+            "description": "Deletes the solution in the subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Solutions_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Solutions_Get": {
+            "main": "./lib/actions/Solutions_Get.js",
+            "title": "Retrieve solution.",
+            "description": "Retrieves the user solution.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Solutions_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Solutions_CreateOrUpdate": {
+            "main": "./lib/actions/Solutions_CreateOrUpdate.js",
+            "title": "Create/Update Solution.",
+            "description": "Creates or updates the Solution.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Solutions_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ManagementAssociations_Delete": {
+            "main": "./lib/actions/ManagementAssociations_Delete.js",
+            "title": "Deletes the ManagementAssociation",
+            "description": "Deletes the ManagementAssociation in the subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ManagementAssociations_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ManagementAssociations_Get": {
+            "main": "./lib/actions/ManagementAssociations_Get.js",
+            "title": "Retrieve ManagementAssociation.",
+            "description": "Retrieves the user ManagementAssociation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ManagementAssociations_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ManagementAssociations_CreateOrUpdate": {
+            "main": "./lib/actions/ManagementAssociations_CreateOrUpdate.js",
+            "title": "Create/Update ManagementAssociation.",
+            "description": "Creates or updates the ManagementAssociation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ManagementAssociations_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

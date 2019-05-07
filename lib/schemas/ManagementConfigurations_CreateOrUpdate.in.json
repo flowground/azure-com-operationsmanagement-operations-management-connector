@@ -1,0 +1,96 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._\\(\\)]+$"
+        },
+        "managementConfigurationName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The container for solution.",
+            "properties": {
+                "id": {
+                    "description": "Resource ID.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "location": {
+                    "description": "Resource location",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Resource name.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "Properties for ManagementConfiguration object supported by the OperationsManagement resource provider.",
+                    "properties": {
+                        "applicationId": {
+                            "description": "The applicationId of the appliance for this Management.",
+                            "type": "string"
+                        },
+                        "parameters": {
+                            "description": "Parameters to run the ARM template",
+                            "items": {
+                                "description": "Parameter to pass to ARM template",
+                                "properties": {
+                                    "name": {
+                                        "description": "name of the parameter.",
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "description": "value for the parameter. In Jtoken ",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "parentResourceType": {
+                            "description": "The type of the parent resource.",
+                            "type": "string"
+                        },
+                        "provisioningState": {
+                            "description": "The provisioning state for the ManagementConfiguration.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "template": {
+                            "description": "The Json object containing the ARM template to deploy",
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "parameters",
+                        "parentResourceType",
+                        "template"
+                    ],
+                    "x-ms-azure-resource": true
+                },
+                "type": {
+                    "description": "Resource type.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "x-ms-azure-resource": true,
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
